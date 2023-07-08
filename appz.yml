@@ -36,7 +36,7 @@ properties:
   WP_BACKUP_VERBOSE : 0
   MYSQL_PASSWORD:
      vault: MYSQL_PASSWORD
-  SITE_URL : "https://www.ecloudcontrol.com"
+  SITE_URL : "https://dev.ecloudcontrol.com"
   SITE_TITLE : "CLOUDCONTROL"
   ADMIN_USER : webmaster
   ADMIN_EMAIL : webmaster@ecloudcontrol.com
