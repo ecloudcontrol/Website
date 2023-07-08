@@ -5,13 +5,13 @@ app:
 
 build:
   version: 3.0
-  env: PROD
+  env: DEV
   build_file: none
   output_files: output/*.zip
   image_template: wordpress-5.8
 
 deploy:
-  context: ecloudcontrol/PROD
+  context: ecloudcontrol/DEV
   type: statefulset
   ingress: none
   replicas: 1
