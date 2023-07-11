@@ -1,9 +1,10 @@
 ---
 theme:
-  - name: Avada
-    url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada.zip
   - name: Avada-Child-Theme
     url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada-Child-Theme.zip
+  - name: Avada
+    url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada.zip
+  
 
 plugins:
    - https://www.ecloudcontrol.com/wp-content/uploads/2020/06/fusion-core-4.2.3.zip
