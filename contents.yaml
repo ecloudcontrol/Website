@@ -2,6 +2,8 @@
 theme:
   - name: Avada
     url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada.zip
+  - name: Avada-Child-Theme
+    url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada-Child-Theme.zip
     
 
 plugins:
@@ -16,3 +18,4 @@ plugins:
    - https://www.ecloudcontrol.com/wp-content/uploads/2020/08/wordpress-seo-premium-14.6.1.zip
    - https://downloads.wordpress.org/plugin/wp-mail-smtp.2.2.1.zip
    - https://downloads.wordpress.org/plugin/zoho-salesiq.zip
+   
