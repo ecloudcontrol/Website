@@ -26,6 +26,7 @@ volumes:
   - claim: wp-backup
     mount: /appz/backup
     name: backup
+    
     size: 250Gi   
 
 properties:
