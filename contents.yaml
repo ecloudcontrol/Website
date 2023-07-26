@@ -4,18 +4,14 @@ theme:
     url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada.zip
   - name: Avada-Child-Theme
     url: https://www.ecloudcontrol.com/wp-content/uploads/2023/06/Avada-Child-Theme.zip
-    
-
 plugins:
-   - https://www.ecloudcontrol.com/wp-content/uploads/2020/06/fusion-core-4.2.3.zip
-   - https://www.ecloudcontrol.com/wp-content/uploads/2020/06/fusion-builder-2.2.3.zip
-   - https://www.ecloudcontrol.com/wp-content/uploads/2019/06/revslider-5.4.8.3.zip
-   - https://downloads.wordpress.org/plugin/contact-form-7.5.2.zip
-   - https://downloads.wordpress.org/plugin/query-monitor.3.6.1.zip
+   - https://www.ecloudcontrol.com/wp-content/uploads/2023/07/fusion-core-5.11.0.zip
+   - https://www.ecloudcontrol.com/wp-content/uploads/2023/07/fusion-builder-3.11.0.zip
+   - https://www.ecloudcontrol.com/wp-content/uploads/2023/07/revslider-6.6.14.zip
+   - https://downloads.wordpress.org/plugin/contact-form-7.5.7.5.1.zip
+   - https://downloads.wordpress.org/plugin/query-monitor.3.12.1.zip
    - https://downloads.wordpress.org/plugin/tuxedo-big-file-uploads.1.2.zip
    - https://downloads.wordpress.org/plugin/google-site-kit.1.13.0.zip
    - https://downloads.wordpress.org/plugin/yet-another-related-posts-plugin.5.3.0.zip
-   - https://www.ecloudcontrol.com/wp-content/uploads/2020/08/wordpress-seo-premium-14.6.1.zip
-   - https://downloads.wordpress.org/plugin/wp-mail-smtp.2.2.1.zip
-   - https://downloads.wordpress.org/plugin/zoho-salesiq.zip
-   
+   - https://downloads.wordpress.org/plugin/wordpress-seo.20.5.zip
+   - https://downloads.wordpress.org/plugin/wp-mail-smtp.3.7.0.zip
