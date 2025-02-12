@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Remove the Hello Dolly plugin using WP-CLI
 if wp --allow-root plugin is-installed hello; then
     wp --allow-root plugin delete hello
     echo "Hello Dolly plugin removed."
