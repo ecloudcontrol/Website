@@ -7,6 +7,7 @@ else
     echo "Hello Dolly plugin not found."
 fi
 
+
 filename="mychildtheme_add_google_analytics"
 
 header_file="/var/www/html/wp-content/themes/Avada-Child-Theme/functions.php"
