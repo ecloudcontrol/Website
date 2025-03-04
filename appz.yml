@@ -1,7 +1,7 @@
 app:
-  name: v4.eCloudControl.com
+  name: v4.eCloudControltesting.com
   code: ECSWEB
-  notify: appzdev@cloudbourne.co
+  notify: apeethambaran@ecloudcontrol.com
 
 build:
   version: 6.0
@@ -11,7 +11,7 @@ build:
   image_template: wordpress-6.7
 
 deploy:
-  context: ecloudcontrol/PROD
+  context: anandp0/dev
   type: statefulset
   #ingress: none
   replicas: 1
@@ -30,15 +30,15 @@ volumes:
     size: 250Gi   
 
 properties:
-  MYSQL_HOST : "mysql-5-7:3306"
+  MYSQL_HOST : "10.1.148.141:3306"
   MYSQL_DATABASE : "lowcloud"
   MYSQL_USER : "lowcloud"
   ENABLE_HA : "no"
   WP_BACKUP_VERBOSE : 0
   MYSQL_PASSWORD:
      vault: MYSQL_PASSWORD
-  SITE_URL : "https://www.lowtouch.ai"
-  SITE_TITLE : "Lowtouch.Ai"
+  SITE_URL : "https://www.lowtouchtesting.ai"
+  SITE_TITLE : "Lowtouchtest.Ai"
   ADMIN_USER : webmaster
   ADMIN_EMAIL : webmaster@ecloudcontrol.com
   ADMIN_PASSWORD:
