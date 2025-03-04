@@ -32,8 +32,8 @@ volumes:
 
 properties:
   MYSQL_HOST : "mysql-5-7:3306"
-  MYSQL_DATABASE : "lowcloud"
-  MYSQL_USER : "lowcloud"
+  MYSQL_DATABASE : "wordpress_db"
+  MYSQL_USER : "anand"
   ENABLE_HA : "no"
   WP_BACKUP_VERBOSE : 0
   MYSQL_PASSWORD:
