@@ -6,7 +6,7 @@ app:
 
 build:
   version: 6.0
-  env: PROD
+  env: DEV
   build_file: none
   output_files: output/*.zip
   image_template: wordpress-6.7
