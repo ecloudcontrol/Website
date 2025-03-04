@@ -1,5 +1,5 @@
 app:
-  name: v4.eCloudControltesting.com
+  name: v4.eCloudControl.com
   code: ECSWEB
   notify: apeethambaran@ecloudcontrol.com
 
@@ -30,14 +30,14 @@ volumes:
     size: 250Gi   
 
 properties:
-  MYSQL_HOST : "10.1.148.141:3306"
+  MYSQL_HOST : "mysql-5-7:3306"
   MYSQL_DATABASE : "lowcloud"
   MYSQL_USER : "lowcloud"
   ENABLE_HA : "no"
   WP_BACKUP_VERBOSE : 0
   MYSQL_PASSWORD:
      vault: MYSQL_PASSWORD
-  SITE_URL : "https://www.lowtouchtesting.ai"
+  SITE_URL : "https://www.lowtouch.ai"
   SITE_TITLE : "Lowtouchtest.Ai"
   ADMIN_USER : webmaster
   ADMIN_EMAIL : webmaster@ecloudcontrol.com
