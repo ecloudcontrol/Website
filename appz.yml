@@ -12,7 +12,7 @@ build:
   image_template: wordpress-6.7
 
 deploy:
-  context: anandp0/dev
+  context: anandp0/DEV
   type: statefulset
   #ingress: none
   replicas: 1
