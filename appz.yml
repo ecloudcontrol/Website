@@ -38,7 +38,7 @@ properties:
   WP_BACKUP_VERBOSE : 0
   MYSQL_PASSWORD:
      vault: MYSQL_PASSWORD
-  SITE_URL : "https://www.anandp0-dev-website-6-0.lowtouchcloud.io"
+  SITE_URL : "https://anandp0-dev-website-6-0.lowtouchcloud.io"
   SITE_TITLE : "Lowtouchtest.Ai"
   ADMIN_USER : webmaster
   ADMIN_EMAIL : webmaster@ecloudcontrol.com
