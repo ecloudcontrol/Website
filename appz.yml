@@ -48,4 +48,4 @@ properties:
   SITE_CERT: 
      vault: SITE_CERT
   ENABLE_BACKUP_METRIC: 1
-  revision : 119
+  revision : 120
