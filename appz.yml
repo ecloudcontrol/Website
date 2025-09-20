@@ -30,7 +30,7 @@ volumes:
     size: 250Gi   
 
 properties:
-  MYSQL_HOST : "mysql-5-7:3306"
+  MYSQL_HOST : "mysql-8-0:3306"
   MYSQL_DATABASE : "lowcloud"
   MYSQL_USER : "lowcloud"
   ENABLE_HA : "no"
