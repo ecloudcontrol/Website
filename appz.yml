@@ -32,7 +32,7 @@ volumes:
     size: 250Gi   
 
 properties:
-  MYSQL_HOST : "mysql-5-7:3306"
+  MYSQL_HOST : "mysql-8-0:3306"
   MYSQL_DATABASE : "ecloudcontrol_com_v4"
   MYSQL_USER : "ecloudcontrol_com"
   ENABLE_HA : "no"
