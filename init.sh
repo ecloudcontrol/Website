@@ -1,4 +1,12 @@
 #!/bin/bash
+# Remove the Hello Dolly plugin using WP-CLI
+if wp --allow-root plugin is-installed hello; then
+    wp --allow-root plugin delete hello
+    echo "Hello Dolly plugin removed."
+else
+    echo "Hello Dolly plugin not found."
+fi
+
 filename="AppZ-Healthcare-Case-Study-Oct-2020-v2-1"
 if  grep $filename  -q  /var/www/html/wp-content/themes/Avada/header.php ;then
   echo "theme change already exist..."
