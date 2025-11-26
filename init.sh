@@ -4,10 +4,10 @@ cd /var/www/html || exit 1
 echo "Checking for Hello Dolly plugin..."
 if wp --allow-root plugin is-installed hello; then
     echo "Hello Dolly plugin found. Deleting..."
-    wp --allow-root plugin delete hello || echo "⚠️ WP-CLI delete command failed"
-    echo "✅ Hello Dolly plugin removed."
+    wp --allow-root plugin delete hello || echo "WP-CLI delete command failed"
+    echo "Hello Dolly plugin removed."
 else
-    echo "❌ Hello Dolly plugin not found."
+    echo "Hello Dolly plugin not found."
 fi
 
 filename="AppZ-Healthcare-Case-Study-Oct-2020-v2-1"
