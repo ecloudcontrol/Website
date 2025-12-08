@@ -1,21 +1,24 @@
 <?php
-
 /**
- * Load child stylesheet + inject grid CSS
+ * Avada Child Theme - functions.php (Clean + Fixed)
  */
-function childtheme_enqueue_styles() {
-    $ver  = wp_get_theme()->get('Version');
-    $deps = array();
 
-    // Enqueue child theme style.css
+/* ----------------------------------------------------
+ * 1. Enqueue Child CSS + Grid CSS
+ * -------------------------------------------------- */
+function childtheme_enqueue_styles() {
+
+    $ver = wp_get_theme()->get('Version');
+
+    // Load child theme stylesheet
     wp_enqueue_style(
         'child-style',
         get_stylesheet_uri(),
-        $deps,
+        [],
         $ver
     );
 
-    // Inject responsive grid + title clamp CSS
+    // Inline CSS
     $inline_css = <<<CSS
 /* Grid layout for shortcode cards */
 .pages-grid {
@@ -67,22 +70,26 @@ CSS;
 
     wp_add_inline_style('child-style', $inline_css);
 }
-add_action( 'wp_enqueue_scripts', 'childtheme_enqueue_styles', 20 );
+add_action('wp_enqueue_scripts', 'childtheme_enqueue_styles', 20);
 
-/**
- * Load child theme textdomain (Avada)
- */
+
+
+/* ----------------------------------------------------
+ * 2. Load Child Theme Textdomain (Translation)
+ * -------------------------------------------------- */
 function childtheme_lang_setup() {
     $lang = get_stylesheet_directory() . '/languages';
-    load_child_theme_textdomain( 'Avada', $lang );
+    load_child_theme_textdomain('Avada', $lang);
 }
-add_action( 'after_setup_theme', 'childtheme_lang_setup' );
+add_action('after_setup_theme', 'childtheme_lang_setup');
 
-/**
- * Google Analytics 4
- */
-function mychildtheme_add_google_analytics() {
-    if ( current_user_can( 'manage_options' ) ) return;
+
+
+/* ----------------------------------------------------
+ * 3. Google Analytics 4
+ * -------------------------------------------------- */
+function childtheme_google_analytics() {
+    if ( current_user_can('manage_options') ) return;
     ?>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVM06EJTVD"></script>
@@ -94,66 +101,68 @@ function mychildtheme_add_google_analytics() {
     </script>
     <?php
 }
-add_action( 'wp_head', 'mychildtheme_add_google_analytics' );
+add_action('wp_head', 'childtheme_google_analytics');
 
-/**
- * Shortcode: [pages_by_page_type value="AI Agents" per_page="12"]
- */
-add_shortcode( 'pages_by_page_type', function( $atts ) {
+
+
+/* ----------------------------------------------------
+ * 4. Shortcode: [pages_by_page_type value="AI Agents" per_page="12"]
+ * -------------------------------------------------- */
+add_shortcode('pages_by_page_type', function($atts) {
 
     $atts = shortcode_atts(
-        array(
+        [
             'value'    => '',
             'per_page' => 12,
-        ),
+        ],
         $atts,
         'pages_by_page_type'
     );
 
-    $value    = sanitize_text_field( $atts['value'] );
-    $per_page = max( 1, intval( $atts['per_page'] ) );
+    $value    = sanitize_text_field($atts['value']);
+    $per_page = max(1, intval($atts['per_page']));
+    $paged    = max(1, get_query_var('paged') ?: get_query_var('page') ?: 1);
 
-    $paged = max( 1, get_query_var('paged') ?: get_query_var('page') ?: 1 );
+    $meta_query = [];
 
-    $meta_query = array();
-
-    if ( $value !== '' ) {
-        $meta_query[] = array(
+    if ($value !== '') {
+        $meta_query[] = [
             'key'     => 'page_type',
             'value'   => $value,
             'compare' => '=',
-        );
+        ];
     } else {
-        $meta_query[] = array(
+        $meta_query[] = [
             'key'     => 'page_type',
             'value'   => '',
             'compare' => '!=',
-        );
+        ];
     }
 
-    $q = new WP_Query( array(
+    $q = new WP_Query([
         'post_type'      => 'page',
         'posts_per_page' => $per_page,
         'paged'          => $paged,
         'meta_query'     => $meta_query,
         'orderby'        => 'menu_order title',
         'order'          => 'ASC',
-    ) );
+    ]);
 
     ob_start();
 
-    if ( $q->have_posts() ) {
+    if ($q->have_posts()) {
+
         echo '<div class="pages-grid">';
-        while ( $q->have_posts() ) { $q->the_post();
+
+        while ($q->have_posts()) {
+            $q->the_post();
+
             echo '<article class="pages-grid__item">';
+            echo '<h3><a href="'.esc_url(get_permalink()).'">'.esc_html(get_the_title()).'</a></h3>';
 
-            echo '<h3><a href="' . esc_url( get_permalink() ) . '">'
-                 . esc_html( get_the_title() )
-                 . '</a></h3>';
-
-            if ( has_post_thumbnail() ) {
-                echo '<a href="' . esc_url( get_permalink() ) . '">'
-                     . get_the_post_thumbnail( get_the_ID(), 'medium' )
+            if (has_post_thumbnail()) {
+                echo '<a href="'.esc_url(get_permalink()).'">'
+                     . get_the_post_thumbnail(get_the_ID(), 'medium')
                      . '</a>';
             }
 
@@ -161,12 +170,13 @@ add_shortcode( 'pages_by_page_type', function( $atts ) {
 
             echo '</article>';
         }
+
         echo '</div>';
 
-        echo paginate_links( array(
+        echo paginate_links([
             'total'   => $q->max_num_pages,
             'current' => $paged,
-        ) );
+        ]);
 
         wp_reset_postdata();
     } else {
@@ -176,9 +186,11 @@ add_shortcode( 'pages_by_page_type', function( $atts ) {
     return ob_get_clean();
 });
 
-/**
- * Move reCAPTCHA badge to bottom-left
- */
+
+
+/* ----------------------------------------------------
+ * 5. Move reCAPTCHA Badge to Bottom-Left
+ * -------------------------------------------------- */
 function childtheme_move_recaptcha_to_left() {
 
     $css = "
@@ -195,14 +207,10 @@ function childtheme_move_recaptcha_to_left() {
       }
     ";
 
-    if ( wp_style_is( 'child-style', 'enqueued' ) ) {
-        wp_add_inline_style( 'child-style', $css );
-    } else {
-        echo "<style type='text/css'>{$css}</style>";
-    }
+    wp_add_inline_style('child-style', $css);
 
-    wp_register_script( 'child-recaptcha-left', false, array(), null, true );
-    wp_enqueue_script( 'child-recaptcha-left' );
+    wp_register_script('child-recaptcha-left', false, [], null, true);
+    wp_enqueue_script('child-recaptcha-left');
 
     $js = "
       (function() {
@@ -228,16 +236,18 @@ function childtheme_move_recaptcha_to_left() {
       })();
     ";
 
-    wp_add_inline_script( 'child-recaptcha-left', $js );
+    wp_add_inline_script('child-recaptcha-left', $js);
 }
-add_action( 'wp_enqueue_scripts', 'childtheme_move_recaptcha_to_left', 30 );
+add_action('wp_enqueue_scripts', 'childtheme_move_recaptcha_to_left', 30);
 
-/**
- * Move Iubenda Consent Button to Bottom-Left
- */
+
+
+/* ----------------------------------------------------
+ * 6. Move Iubenda Consent Button to Bottom-Left
+ * -------------------------------------------------- */
 function move_iubenda_button_to_left() {
     ?>
-    <style id="iubenda-move-style">
+    <style>
       button.iubenda-tp-btn[data-tp-float="bottom-right"] {
         right: auto !important;
         left: 20px !important;
@@ -245,6 +255,7 @@ function move_iubenda_button_to_left() {
         z-index: 2147483647 !important;
       }
     </style>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         function moveIubendaButton() {
@@ -253,21 +264,21 @@ function move_iubenda_button_to_left() {
                 btn.style.right = 'auto';
                 btn.style.left = '20px';
                 btn.style.bottom = '90px';
-                btn.setAttribute('data-tp-float', 'bottom-left');
                 btn.style.zIndex = '2147483647';
+                btn.setAttribute('data-tp-float', 'bottom-left');
                 return true;
             }
             return false;
         }
 
-        if (!moveIubendaButton()) {
-            var attempts = 0;
-            var interval = setInterval(function() {
-                if (moveIubendaButton() || attempts++ > 20) clearInterval(interval);
-            }, 500);
-        }
+        var attempts = 0;
+        var interval = setInterval(function() {
+            if (moveIubendaButton() || attempts++ > 20) {
+                clearInterval(interval);
+            }
+        }, 500);
     });
     </script>
     <?php
 }
-add_action( 'wp_footer', 'move_iubenda_button_to_left', 100 );
+add_action('wp_footer', 'move_iubenda_button_to_left', 100);
