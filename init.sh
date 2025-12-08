@@ -1,10 +1,7 @@
 #!/bin/bash
-cd /var/www/html || exit 1
-
-echo "Checking for Hello Dolly plugin..."
+# Remove the Hello Dolly plugin using WP-CLI
 if wp --allow-root plugin is-installed hello; then
-    echo "Hello Dolly plugin found. Deleting..."
-    wp --allow-root plugin delete hello || echo "WP-CLI delete command failed"
+    wp --allow-root plugin delete hello
     echo "Hello Dolly plugin removed."
 else
     echo "Hello Dolly plugin not found."
