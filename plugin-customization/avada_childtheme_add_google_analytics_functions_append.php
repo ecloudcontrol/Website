@@ -1,6 +1,6 @@
 <?php
 /**
- * Avada Child Theme - functions.php (Clean + Fixed)
+ * Avada Child Theme - functions.php 
  */
 
 /* ----------------------------------------------------
