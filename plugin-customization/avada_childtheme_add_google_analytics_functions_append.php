@@ -271,4 +271,3 @@ function move_iubenda_button_to_left() {
     <?php
 }
 add_action( 'wp_footer', 'move_iubenda_button_to_left', 100 );
-
